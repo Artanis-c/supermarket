@@ -1,5 +1,7 @@
 package com.example.supermarketbackend.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +38,10 @@ public class UserController {
     @PostMapping("/add")
     public ResultModel<User> addUser(@RequestBody User model) {
         return userService.addUser(model);
+    }
+
+    @GetMapping("/list")
+    public ResultModel<List<User>> list(@RequestParam(value = "userName",required = false) String userName){
+        return userService.list(userName);
     }
 }

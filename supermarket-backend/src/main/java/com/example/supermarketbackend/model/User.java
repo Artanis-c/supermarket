@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 /**
  * @author tom.cui
  * @date 2023/1/4
@@ -23,4 +25,6 @@ public class User {
     private String password;
 
     private boolean status;
+
+    private LocalDateTime createTime;
 }

@@ -1,9 +1,11 @@
 package com.example.supermarketbackend.service;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -65,5 +67,14 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         }
         boolean save = save(model);
         return new ResultModel<>(model);
+    }
+
+    public ResultModel<List<User>> list(String userName){
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<User>();
+        if (StringUtils.isNotBlank(userName)){
+            queryWrapper.eq(User::getName, userName);
+        }
+        List<User> list = list(queryWrapper);
+        return new ResultModel<>(list);
     }
 }

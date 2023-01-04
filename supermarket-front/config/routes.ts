@@ -20,6 +20,12 @@
     component: './Welcome',
   },
   {
+    path: '/usermanager',
+    name: '用户管理',
+    icon: 'smile',
+    component: './UserManger/UserManger'
+  },
+  {
     path: '/admin',
     name: 'admin',
     icon: 'crown',
