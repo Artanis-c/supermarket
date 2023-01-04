@@ -1,0 +1,15 @@
+
+server:
+  port: 8089
+spring:
+  application:
+    name: supermarket-backend
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://42.192.13.227:3306/supermarket?useUnicode=true&characterEncoding=UTF-8&verifyServerCertificate=false&serverTimezone=Asia/Shanghai&useSSL=false&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: QWERasdf1!
+logging:
+  level:
+    com.example.supermarketbackend.mapper: debug
+
