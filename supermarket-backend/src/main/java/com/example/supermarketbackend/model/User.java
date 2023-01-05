@@ -24,7 +24,7 @@ public class User {
 
     private String password;
 
-    private boolean status;
+    private int status;
 
     private LocalDateTime createTime;
 }

@@ -6,10 +6,12 @@ import { set } from 'lodash';
 import React, { useRef, useState } from 'react';
 import { FormattedMessage } from 'umi';
 import { UserModel } from '../user/model';
-import { addUser, getUser, userList } from './UserService';
+import { addUser, editUser, getUser, userList } from './UserService';
 const UserManger: React.FC = () => {
 
     const [formVisible, setFromVisible] = useState<boolean>(false);
+    const [isEdit, setisEdit] = useState<boolean>(false);
+    const [userId, setuserId] = useState<number>(0);
     const ref = useRef<ActionType>();
     const formRef = useRef<ProFormInstance>();
     const columns: ProColumns<UserModel>[] = [
@@ -28,9 +30,8 @@ const UserManger: React.FC = () => {
             hideInSearch: true,
             valueType: 'select',
             valueEnum: {
-                true: { text: '启用', value: true },
-                false: { text: '禁用', value: false }
-
+                1: { text: '启用', value: 1 },
+                0: { text: '禁用', value: 0 }
             }
         },
         {
@@ -47,6 +48,8 @@ const UserManger: React.FC = () => {
                     const res = await getUser(record.id)
                     formRef.current?.setFieldsValue(res.data)
                     setFromVisible(true)
+                    setisEdit(true)
+                    setuserId(record.id)
                 }}>编辑</a>
             ]
         }]
@@ -84,7 +87,13 @@ const UserManger: React.FC = () => {
                 width="md"
                 onVisibleChange={(x) => { setFromVisible(x) }}
                 onFinish={async (data) => {
-                    await addUser(data)
+                    if (isEdit) {
+                        data.id = userId
+                        await editUser(data)
+                    } else {
+                        await addUser(data)
+                    }
+                    setisEdit(false)
                     setFromVisible(false)
                     ref.current?.reload();
                     formRef.current?.resetFields();
@@ -119,11 +128,11 @@ const UserManger: React.FC = () => {
                     ]}
                 />
                 <ProFormSelect width="md" name='status' label='状态' options={[{
-                    value: 'true',
+                    value: 1,
                     label: '启用',
                 },
                 {
-                    value: 'false',
+                    value: 0,
                     label: '停用',
                 },]} />
             </DrawerForm>

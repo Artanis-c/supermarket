@@ -35,6 +35,7 @@ public class ResultModel<T> {
     public ResultModel(String msg, boolean success) {
         this.errorMessage = msg;
         this.success = success;
+        this.showType=2;
     }
 
     public static ResultModel of(Object data){

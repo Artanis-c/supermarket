@@ -72,7 +72,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     }
 
     public ResultModel<IPage<User>> list(UserRequest request) {
-        IPage<User> list = baseMapper.list(request.genPage(), request.getUserName());
+        IPage<User> list = baseMapper.list(request.genPage(), request.getName());
         return new ResultModel<>(list);
     }
 

@@ -10,5 +10,5 @@ import lombok.Data;
 @Data
 public class UserRequest extends PageRequest{
 
-    private String userName;
+    private String name;
 }

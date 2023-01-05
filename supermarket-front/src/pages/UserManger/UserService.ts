@@ -25,6 +25,16 @@ export async function addUser(params: any) {
     })
 }
 
+export async function editUser(params: any) {
+    return request<ApiResponse<UserModel>>('/api/user/edit', {
+        method: 'POST',
+        data: params,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+}
+
 export async function getUser(id: number) {
     return request<ApiResponse<UserModel>>(`api/user/get/${id}`, {
         method: 'GET',
