@@ -1,14 +1,14 @@
 package com.example.supermarketbackend.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.supermarketbackend.model.ResultModel;
 import com.example.supermarketbackend.model.User;
+import com.example.supermarketbackend.req.UserRequest;
 import com.example.supermarketbackend.service.UserService;
 
 /**
@@ -40,8 +40,18 @@ public class UserController {
         return userService.addUser(model);
     }
 
-    @GetMapping("/list")
-    public ResultModel<List<User>> list(@RequestParam(value = "userName",required = false) String userName){
-        return userService.list(userName);
+    @PostMapping("/list")
+    public ResultModel<IPage<User>> list(@RequestBody UserRequest request) {
+        return userService.list(request);
+    }
+
+    @GetMapping("/get/{id}")
+    public ResultModel<User> queryUser(@PathVariable("id") Integer id) {
+        return userService.queryUser(id);
+    }
+
+    @PostMapping("/edit")
+    public ResultModel<User> editUser(@RequestBody User req) {
+        return userService.editUser(req);
     }
 }

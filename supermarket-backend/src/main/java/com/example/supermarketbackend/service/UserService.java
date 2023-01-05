@@ -1,18 +1,19 @@
 package com.example.supermarketbackend.service;
 
-import java.util.List;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.supermarketbackend.mapper.UserMapper;
 import com.example.supermarketbackend.model.ResultModel;
 import com.example.supermarketbackend.model.User;
+import com.example.supermarketbackend.req.UserRequest;
 
 /**
  * @author tom.cui
@@ -65,16 +66,32 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         if (Objects.nonNull(one)) {
             return new ResultModel<>("用户名已存在", false);
         }
+        model.setCreateTime(LocalDateTime.now());
         boolean save = save(model);
         return new ResultModel<>(model);
     }
 
-    public ResultModel<List<User>> list(String userName){
-        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<User>();
-        if (StringUtils.isNotBlank(userName)){
-            queryWrapper.eq(User::getName, userName);
-        }
-        List<User> list = list(queryWrapper);
+    public ResultModel<IPage<User>> list(UserRequest request) {
+        IPage<User> list = baseMapper.list(request.genPage(), request.getUserName());
         return new ResultModel<>(list);
+    }
+
+    public ResultModel<User> queryUser(Integer id) {
+        User user = getById(id);
+        if (Objects.nonNull(user)) {
+            return new ResultModel<>(user);
+        } else {
+            return new ResultModel<>("没有找到用户", false);
+        }
+
+    }
+
+    public ResultModel<User> editUser(User req) {
+        User user = getById(req.getId());
+        if (Objects.isNull(user)) {
+            return ResultModel.fail("用户不存在");
+        }
+        updateById(req);
+        return ResultModel.of(req);
     }
 }

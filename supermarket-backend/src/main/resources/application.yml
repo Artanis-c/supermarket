@@ -13,3 +13,5 @@ logging:
   level:
     com.example.supermarketbackend.mapper: debug
 
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*Mapper.xml

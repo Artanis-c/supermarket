@@ -36,4 +36,12 @@ public class ResultModel<T> {
         this.errorMessage = msg;
         this.success = success;
     }
+
+    public static ResultModel of(Object data){
+        return new ResultModel(data);
+    }
+
+    public static ResultModel fail(String msg){
+        return new ResultModel(msg,false);
+    }
 }
