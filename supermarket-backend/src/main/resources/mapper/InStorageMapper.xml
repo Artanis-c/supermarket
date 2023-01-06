@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.supermarketbackend.mapper.InStorageMapper">
+    <select id="queryInStorageRecord" resultType="com.example.supermarketbackend.model.InStorageRecord">
+        select *
+        from in_storage as a
+        inner join goods as b on a.goods_id = b.id
+        inner join user as c on a.user_id = c.id
+        <where>
+            <if test="inStorageRequest.userName!=null and inStorageRequest.userName!=''">
+                and c.name like '%{inStorageRequest.userName}%'
+            </if>
+            <if test="inStorageRequest.goodName!=null and inStorageRequest.goodName!=''">
+                and b.goods_name like '%${inStorageRequest.goodName}%'
+            </if>
+        </where>
+    </select>
+</mapper>
