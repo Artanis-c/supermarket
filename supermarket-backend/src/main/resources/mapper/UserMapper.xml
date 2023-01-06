@@ -5,7 +5,7 @@
     <select id="list" resultType="com.example.supermarketbackend.model.User">
         select * from user
         <where>
-            <if test="userName!=null">
+            <if test="userName!=null and userName!=''">
                 name=#{userName}
             </if>
         </where>

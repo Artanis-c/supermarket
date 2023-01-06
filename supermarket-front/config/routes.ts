@@ -22,7 +22,7 @@
   {
     path: '/usermanager',
     name: '用户管理',
-    icon: 'smile',
+    icon: 'TeamOutlined',
     component: './UserManger/UserManger'
   },
   {
