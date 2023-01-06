@@ -8,6 +8,8 @@ import com.example.supermarketbackend.model.ResultModel;
 import com.example.supermarketbackend.req.GoodsRequest;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 /**
  * @author tom.cui
  * @date 2023/1/5
@@ -22,6 +24,7 @@ public class GoodsService extends ServiceImpl<GoodsMapper, Goods> {
     }
 
     public ResultModel<Goods> addGoods(Goods goods) {
+        goods.setCreateTime(LocalDateTime.now());
         save(goods);
         return ResultModel.of(goods);
     }

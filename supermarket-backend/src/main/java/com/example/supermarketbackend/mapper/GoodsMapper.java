@@ -15,6 +15,6 @@ import com.example.supermarketbackend.model.Goods;
 @Mapper
 public interface GoodsMapper extends BaseMapper<Goods> {
 
-    public IPage<Goods> queryGoods(IPage page, @Param("goodName") String goodsName);
+    public IPage<Goods> queryGoods(IPage page, @Param("goodsName") String goodsName);
 
 }

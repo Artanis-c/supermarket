@@ -26,6 +26,12 @@
     component: './UserManger/UserManger'
   },
   {
+    path: '/goods',
+    name: '商品管理',
+    icon: 'FolderOpenOutlined',
+    component: './Goods/Goods'
+  },
+  {
     path: '/admin',
     name: 'admin',
     icon: 'crown',

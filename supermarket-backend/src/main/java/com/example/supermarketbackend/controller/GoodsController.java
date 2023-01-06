@@ -15,7 +15,7 @@ import com.example.supermarketbackend.service.GoodsService;
  * @description
  */
 @RestController
-@RequestMapping("/goods")
+@RequestMapping("/api/goods")
 public class GoodsController {
 
     @Autowired
@@ -39,6 +39,12 @@ public class GoodsController {
     @GetMapping("/remove/{id}")
     public ResultModel<Integer> remove(@PathVariable("id") Integer id) {
         return goodsService.deleteGoods(id);
+    }
+
+    @GetMapping("/get/{id}")
+    public ResultModel<Integer> getGoods(@PathVariable("id") Integer id) {
+        Goods byId = goodsService.getById(id);
+        return ResultModel.of(byId);
     }
 
 }

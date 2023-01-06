@@ -4,8 +4,8 @@
     <select id="queryGoods" resultType="com.example.supermarketbackend.model.Goods">
         select * from goods
         <where>
-            <if test="goodsName!=null">
-                goods_name =#{goodName}
+            <if test="goodsName!=null and goodsName!=''">
+                goods_name =#{goodsName}
             </if>
         </where>
     </select>

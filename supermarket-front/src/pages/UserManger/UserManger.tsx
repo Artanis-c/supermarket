@@ -1,8 +1,7 @@
 
-import { ActionType, DrawerForm, PageContainer, PagtContainer, ProForm, ProFormInstance, ProFormSelect, ProFormText } from '@ant-design/pro-components';
+import { ActionType, DrawerForm, PageContainer, ProFormInstance, ProFormSelect, ProFormText } from '@ant-design/pro-components';
 import ProTable, { ProColumns } from '@ant-design/pro-table';
 import { Button } from 'antd';
-import { set } from 'lodash';
 import React, { useRef, useState } from 'react';
 import { FormattedMessage } from 'umi';
 import { UserModel } from '../user/model';
@@ -61,7 +60,7 @@ const UserManger: React.FC = () => {
                 columns={columns}
                 request={async (params, sort, filter) => {
                     const res = await userList(params);
-                    console.log(res)
+                    //console.log(res)
                     return {
                         data: res.data.records,
                         total: res.data.total,
