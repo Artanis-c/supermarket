@@ -5,3 +5,19 @@ export type UserModel = {
     status: boolean,
     createTime: Date
 }
+
+export type PagerModel<T> = {
+    total: number,
+    records: T
+}
+
+export type ApiResponse<T> = {
+    data: T,
+    success: boolean,
+    errorMessage: string
+}
+
+export type KeyValuePair = {
+    value: number,
+    label: string
+}

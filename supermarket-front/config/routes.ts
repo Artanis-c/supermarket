@@ -32,6 +32,18 @@
     component: './Goods/Goods'
   },
   {
+    path: '/instorage',
+    name: '入库管理',
+    icon: 'FundViewOutlined',
+    component: './Instorage/InStorage'
+  },
+  {
+    path: '/outstorage',
+    name: '出库管理',
+    icon: 'FundViewOutlined',
+    component: './OutStorage/OutStorage'
+  },
+  {
     path: '/admin',
     name: 'admin',
     icon: 'crown',

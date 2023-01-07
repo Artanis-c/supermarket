@@ -10,8 +10,7 @@ import java.time.LocalDateTime;
  * @description
  */
 @Data
-public class InStorageRecord {
-
+public class OutStorageRecord {
     private Integer id;
 
     private String goodsName;

@@ -1,11 +1,15 @@
 package com.example.supermarketbackend.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.example.supermarketbackend.model.KeyValuePairModel;
 import com.example.supermarketbackend.model.ResultModel;
 import com.example.supermarketbackend.model.User;
 import com.example.supermarketbackend.req.UserRequest;
@@ -53,5 +57,13 @@ public class UserController {
     @PostMapping("/edit")
     public ResultModel<User> editUser(@RequestBody User req) {
         return userService.editUser(req);
+    }
+
+    @GetMapping("/keyValue")
+    public ResultModel<List<KeyValuePairModel>> getGoodsKeyValuePair() {
+        List<User> list = userService.list();
+        List<KeyValuePairModel> collect =
+            list.stream().map(x -> new KeyValuePairModel(x.getId(), x.getName())).collect(Collectors.toList());
+        return ResultModel.of(collect);
     }
 }

@@ -12,7 +12,7 @@ const Goods: React.FC = () => {
     const [goodsId, setGoodsId] = useState<number>(0);
     const columns: ProColumns<GoodsModel>[] = [
         {
-            dataIndex: 'index',
+            dataIndex: 'id',
             valueType: 'indexBorder',
             width: 48,
         },
@@ -92,7 +92,6 @@ const Goods: React.FC = () => {
                     }
                     setFromVisible(false);
                     setisEdit(false);
-                    formRef.current?.resetFields();
                     formRef.current?.resetFields();
                     ref.current?.reload();
                 }}

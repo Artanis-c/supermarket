@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.supermarketbackend.mapper.InStorageMapper">
-    <select id="queryInStorageRecord" resultType="com.example.supermarketbackend.model.InStorageRecord">
+<mapper namespace="com.example.supermarketbackend.mapper.OutStorageMapper">
+    <select id="queryOutStorageRecord" resultType="com.example.supermarketbackend.model.OutStorageRecord">
         select a.id,a.goods_id,a.user_id,a.create_time as createTime ,b.goods_name as goodsName,c.name as userName,a.number,a.remark
-        from in_storage as a
+        from out_storage as a
         inner join goods as b on a.goods_id = b.id
         inner join user as c on a.user_id = c.id
         <where>
@@ -15,10 +15,10 @@
             </if>
         </where>
     </select>
-    <select id="getInStorageRecord" resultType="com.example.supermarketbackend.model.InStorageRecord">
+    <select id="getOutStorageRecord" resultType="com.example.supermarketbackend.model.OutStorageRecord">
         select a.id,a.goods_id,a.user_id,a.create_time as createTime ,b.goods_name as goodsName,c.name as userName,a.number,a.remark
-        from in_storage as a
-        inner join goods as b on a.goods_id = b.id
-        inner join user as c on a.user_id = c.id where a.id=#{id}
+        from out_storage as a
+                 inner join goods as b on a.goods_id = b.id
+                 inner join user as c on a.user_id = c.id where a.id=#{id}
     </select>
 </mapper>

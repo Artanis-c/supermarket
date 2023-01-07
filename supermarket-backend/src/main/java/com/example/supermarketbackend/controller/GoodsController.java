@@ -1,10 +1,14 @@
 package com.example.supermarketbackend.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.supermarketbackend.model.Goods;
+import com.example.supermarketbackend.model.KeyValuePairModel;
 import com.example.supermarketbackend.model.ResultModel;
 import com.example.supermarketbackend.req.GoodsRequest;
 import com.example.supermarketbackend.service.GoodsService;
@@ -24,6 +28,14 @@ public class GoodsController {
     @PostMapping("/list")
     public ResultModel<IPage<Goods>> queryGoods(@RequestBody GoodsRequest goodsRequest) {
         return goodsService.queryGoods(goodsRequest);
+    }
+
+    @GetMapping("/keyValue")
+    public ResultModel<List<KeyValuePairModel>> getGoodsKeyValuePair() {
+        List<Goods> list = goodsService.list();
+        List<KeyValuePairModel> collect =
+            list.stream().map(x -> new KeyValuePairModel(x.getId(), x.getGoodsName())).collect(Collectors.toList());
+        return ResultModel.of(collect);
     }
 
     @PostMapping("/add")

@@ -1,5 +1,5 @@
 import { request } from "umi";
-import { ApiResponse, PagerModel } from "../user/model";
+import { ApiResponse, KeyValuePair, PagerModel } from "../user/model";
 import { UserModel } from "./model";
 
 export async function userList(params: any) {
@@ -37,6 +37,12 @@ export async function editUser(params: any) {
 
 export async function getUser(id: number) {
     return request<ApiResponse<UserModel>>(`api/user/get/${id}`, {
+        method: 'GET',
+    })
+}
+
+export async function userkeyValue() {
+    return request<ApiResponse<KeyValuePair[]>>(`api/user/keyValue`, {
         method: 'GET',
     })
 }

@@ -23,8 +23,8 @@ import com.example.supermarketbackend.req.UserRequest;
 @Service
 public class UserService extends ServiceImpl<UserMapper, User> {
 
-    private static final String USER_NAME = "USERNAME";
-    private static final String USER_ID = "USERID";
+    public static final String USER_NAME = "USERNAME";
+    public static final String USER_ID = "USERID";
 
     /**
      * @description: 登录

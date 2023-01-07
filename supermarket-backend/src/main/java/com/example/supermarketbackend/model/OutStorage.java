@@ -10,11 +10,12 @@ import java.time.LocalDateTime;
 /**
  * @author tom.cui
  * @date 2023/1/6
- * @description 入库
+ * @description
  */
 @Data
-@TableName("in_storage")
-public class InStorage {
+@TableName("out_storage")
+public class OutStorage {
+
     @TableId(type = IdType.AUTO)
     private Integer id;
 

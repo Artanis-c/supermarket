@@ -15,4 +15,6 @@ public interface InStorageMapper extends BaseMapper<InStorage> {
 
 
     IPage<InStorageRecord> queryInStorageRecord(IPage page, InStorageRequest inStorageRequest);
+
+    InStorageRecord getInStorageRecord(Integer id);
 }
