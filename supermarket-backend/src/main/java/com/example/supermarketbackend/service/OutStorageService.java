@@ -32,14 +32,14 @@ public class OutStorageService extends ServiceImpl<OutStorageMapper, OutStorage>
     @Transactional(rollbackFor = Exception.class)
     public ResultModel<OutStorage> add(OutStorage req) {
         Goods goods = goodsMapper.selectById(req.getGoodsId());
-        Integer newStock = goods.getStock() + req.getNumber();
+        Integer newStock = goods.getStock() - req.getNumber();
         goods.setStock(newStock);
         goodsMapper.updateById(goods);
         boolean saveRes = save(req);
         if (saveRes) {
             return ResultModel.of(req);
         } else {
-            return ResultModel.fail("保存入库记录失败");
+            return ResultModel.fail("保存出库记录失败");
         }
     }
 
