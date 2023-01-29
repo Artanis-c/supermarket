@@ -6,9 +6,9 @@ spring:
     name: supermarket-backend
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://42.192.13.227:3306/supermarket?useUnicode=true&characterEncoding=UTF-8&verifyServerCertificate=false&serverTimezone=Asia/Shanghai&useSSL=false&autoReconnect=true&failOverReadOnly=false
+    url: jdbc:mysql://localhost:3306/supermarket?useUnicode=true&characterEncoding=UTF-8&verifyServerCertificate=false&serverTimezone=Asia/Shanghai&useSSL=false&autoReconnect=true&failOverReadOnly=false
     username: root
-    password: QWERasdf1!
+    password: 123456
 logging:
   level:
     com.example.supermarketbackend.mapper: debug
