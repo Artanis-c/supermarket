@@ -44,6 +44,12 @@
     component: './OutStorage/OutStorage'
   },
   {
+    path: '/statistic',
+    name: '进销存统计',
+    icon: 'table',
+    component: './statistic/statistic'
+  },
+  {
     path: '/admin',
     name: 'admin',
     icon: 'crown',

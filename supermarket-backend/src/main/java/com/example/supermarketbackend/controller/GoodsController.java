@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.supermarketbackend.model.Goods;
 import com.example.supermarketbackend.model.KeyValuePairModel;
 import com.example.supermarketbackend.model.ResultModel;
+import com.example.supermarketbackend.model.StatisticRes;
 import com.example.supermarketbackend.req.GoodsRequest;
 import com.example.supermarketbackend.service.GoodsService;
 
@@ -59,5 +60,9 @@ public class GoodsController {
         return ResultModel.of(byId);
     }
 
+    @GetMapping("/statistic")
+    public ResultModel<List<StatisticRes>> statistic() {
+        return goodsService.statistic();
+    }
 
 }

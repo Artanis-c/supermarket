@@ -1,6 +1,6 @@
 import { request } from "umi";
 import { ApiResponse, KeyValuePair, PagerModel } from "../user/model";
-import { GoodsModel } from "./GoodsModel";
+import { GoodsModel, GoodsStatisticModel } from "./GoodsModel";
 
 
 export async function goodsList(params: any) {
@@ -47,4 +47,11 @@ export async function goodsKeyValue() {
     return request<ApiResponse<KeyValuePair[]>>(`/api/goods/keyValue`, {
         method: 'GET',
     })
+}
+
+export async function goodsStatistic() {
+    return request<ApiResponse<GoodsStatisticModel[]>>(`/api/goods/statistic`, {
+        method: 'GET',
+    })
+
 }

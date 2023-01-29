@@ -6,3 +6,9 @@ export type GoodsModel = {
     remark: string,
     createTime: Date
 }
+
+export type GoodsStatisticModel = {
+    goodsName: string,
+    inNum: number,
+    outNum: number
+}
